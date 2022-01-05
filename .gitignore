@@ -1,3 +1,7 @@
+# Ignore Eclipse build and settings directories
+bin
+.settings
+
 # Ignore Gradle project-specific cache directory
 .gradle
 

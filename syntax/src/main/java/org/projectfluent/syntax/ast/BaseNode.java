@@ -2,6 +2,7 @@ package org.projectfluent.syntax.ast;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -9,13 +10,9 @@ import java.util.Set;
 
 import kotlin.Pair;
 import kotlin.collections.CollectionsKt;
-import kotlin.collections.SetsKt;
 import kotlin.jvm.internal.DefaultConstructorMarker;
-import kotlin.jvm.internal.Reflection;
-import kotlin.reflect.KClass;
 import kotlin.reflect.KProperty1;
 import kotlin.reflect.KVisibility;
-import kotlin.reflect.full.KClasses;
 
 public abstract class BaseNode {
 
@@ -25,15 +22,15 @@ public abstract class BaseNode {
 
     @Override
     public boolean equals(Object other) {
-        return other instanceof BaseNode ? this.equals((BaseNode)other, SetsKt.emptySet()) : false;
+        return other instanceof BaseNode ? this.equals((BaseNode)other, Collections.emptySet()) : false;
     }
 
-    public final boolean equals(BaseNode other, Set ignoredFields) {
+    public final boolean equals(BaseNode other, Set<String> ignoredFields) {
         Objects.requireNonNull(other, "other");
         Objects.requireNonNull(ignoredFields, "ignoredFields");
         boolean var10000;
-        if (Intrinsics.areEqual(Reflection.getOrCreateKotlinClass(this.getClass()), Reflection.getOrCreateKotlinClass(other.getClass()))) {
-            Iterable $this$all$iv = (Iterable)Companion.publicMemberProperties(Reflection.getOrCreateKotlinClass(this.getClass()), ignoredFields);
+        if (this.getClass().equals(other.getClass())) {
+            Iterable $this$all$iv = publicMemberProperties(this.getClass(), ignoredFields);
             int $i$f$all = false;
             if ($this$all$iv instanceof Collection && ((Collection)$this$all$iv).isEmpty()) {
                 var10000 = true;
@@ -97,69 +94,45 @@ public abstract class BaseNode {
         return var10000;
     }
 
-    // $FF: synthetic method
-    public static boolean equals$default(BaseNode var0, BaseNode var1, Set var2, int var3, Object var4) {
-        if (var4 != null) {
-            throw new UnsupportedOperationException("Super calls with default arguments not supported in this target, function: equals");
-        } else {
-            if ((var3 & 2) != 0) {
-                var2 = SetsKt.setOf("span");
-            }
+    private static List publicMemberProperties(Class<?> clazz, Set<String> ignoredFields) {
+        Iterable $this$filterNot$iv = clazz.getMemberProperties(clazz);
+        boolean $i$f$filterNot = false;
+        Collection destination$iv$iv = (new ArrayList());
+        boolean $i$f$filterNotTo = false;
+        Iterator var8 = $this$filterNot$iv.iterator();
 
-            return var0.equals(var1, var2);
+        Object element$iv$iv;
+        KProperty1 it;
+        boolean var11;
+        while (var8.hasNext()) {
+            element$iv$iv = var8.next();
+            it = (KProperty1)element$iv$iv;
+            var11 = false;
+            if (it.getVisibility() == KVisibility.PUBLIC) {
+                destination$iv$iv.add(element$iv$iv);
+            }
         }
+
+        $this$filterNot$iv = (destination$iv$iv);
+        $i$f$filterNot = false;
+        destination$iv$iv = (new ArrayList());
+        $i$f$filterNotTo = false;
+        var8 = $this$filterNot$iv.iterator();
+
+        while (var8.hasNext()) {
+            element$iv$iv = var8.next();
+            it = (KProperty1)element$iv$iv;
+            var11 = false;
+            if (!ignoredFields.contains(it.getName())) {
+                destination$iv$iv.add(element$iv$iv);
+            }
+        }
+
+        return (List)destination$iv$iv;
     }
 
-    private static final class Companion {
-
-        private final List publicMemberProperties(KClass clazz, Set ignoredFields) {
-            Iterable $this$filterNot$iv = (Iterable)KClasses.getMemberProperties(clazz);
-            int $i$f$filterNot = false;
-            Collection destination$iv$iv = (new ArrayList());
-            int $i$f$filterNotTo = false;
-            Iterator var8 = $this$filterNot$iv.iterator();
-
-            Object element$iv$iv;
-            KProperty1 it;
-            boolean var11;
-            while (var8.hasNext()) {
-                element$iv$iv = var8.next();
-                it = (KProperty1)element$iv$iv;
-                var11 = false;
-                if (it.getVisibility() == KVisibility.PUBLIC) {
-                    destination$iv$iv.add(element$iv$iv);
-                }
-            }
-
-            $this$filterNot$iv = (destination$iv$iv);
-            $i$f$filterNot = false;
-            destination$iv$iv = (new ArrayList());
-            $i$f$filterNotTo = false;
-            var8 = $this$filterNot$iv.iterator();
-
-            while (var8.hasNext()) {
-                element$iv$iv = var8.next();
-                it = (KProperty1)element$iv$iv;
-                var11 = false;
-                if (!ignoredFields.contains(it.getName())) {
-                    destination$iv$iv.add(element$iv$iv);
-                }
-            }
-
-            return (List)destination$iv$iv;
-        }
-
-        private final boolean scalarsEqual(Object left, Object right, Set ignoredFields) {
-            return left instanceof BaseNode && right instanceof BaseNode ? ((BaseNode)left).equals((BaseNode)right, ignoredFields)
-                    : Intrinsics.areEqual(left, right);
-        }
-
-        private Companion() {
-        }
-
-        // $FF: synthetic method
-        public Companion(DefaultConstructorMarker $constructor_marker) {
-            this();
-        }
+    private static boolean scalarsEqual(Object left, Object right, Set ignoredFields) {
+        return left instanceof BaseNode && right instanceof BaseNode ? ((BaseNode)left).equals((BaseNode)right, ignoredFields)
+                : Objects.equals(left, right);
     }
 }

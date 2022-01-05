@@ -80,7 +80,7 @@ public final class FluentParser {
                 if (entry instanceof Comment) {
                     var18 = blankLines;
                     var8 = false;
-                    if (var18.length() == 0 && Intrinsics.areEqual(ps.currentChar(), StreamKt.getEOF()) ^ true) {
+                    if (var18.length() == 0 && Objects.equals(ps.currentChar(), StreamKt.getEOF()) ^ true) {
                         lastComment = entry;
                         continue;
                     }
@@ -223,7 +223,7 @@ public final class FluentParser {
 
                 ps.expectChar(' ');
 
-                for (Character ch = ps.takeChar((Function1)null.INSTANCE); Intrinsics.areEqual(ch, StreamKt.getEOF()) ^ true; ch =
+                for (Character ch = ps.takeChar((Function1)null.INSTANCE); Objects.equals(ch, StreamKt.getEOF()) ^ true; ch =
                         ps.takeChar((Function1)null.INSTANCE)) {
                     content = content + ch;
                 }

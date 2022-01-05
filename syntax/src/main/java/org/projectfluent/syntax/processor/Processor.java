@@ -396,14 +396,14 @@ public final class Processor {
     private final CharSequence unescape(MatchResult matchResult) {
         ListIterator matches = CollectionsKt.drop((Iterable)matchResult.getGroupValues(), 2).listIterator();
         String simple = (String)matches.next();
-        if (Intrinsics.areEqual(simple, "") ^ true) {
+        if (Objects.equals(simple, "") ^ true) {
             return simple;
         } else {
             String uni4 = (String)matches.next();
             char var7;
             int codepoint;
             String var10000;
-            if (Intrinsics.areEqual(uni4, "") ^ true) {
+            if (Objects.equals(uni4, "") ^ true) {
                 var7 = 1;
                 boolean var8 = false;
                 if (uni4 == null) {
@@ -425,7 +425,7 @@ public final class Processor {
             }
 
             String uni6 = (String)matches.next();
-            if (Intrinsics.areEqual(uni6, "") ^ true) {
+            if (Objects.equals(uni6, "") ^ true) {
                 byte var13 = 1;
                 boolean var9 = false;
                 if (uni6 == null) {

@@ -63,7 +63,7 @@ final class Indent extends PatternElement {
         if (this != var1) {
             if (var1 instanceof Indent) {
                 Indent var2 = (Indent)var1;
-                if (Intrinsics.areEqual(this.value, var2.value)) {
+                if (Objects.equals(this.value, var2.value)) {
                     return true;
                 }
             }

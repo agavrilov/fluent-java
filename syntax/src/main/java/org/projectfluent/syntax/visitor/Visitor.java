@@ -39,7 +39,7 @@ public abstract class Visitor {
     public final void genericVisit(BaseNode node) {
         Objects.requireNonNull(node, "node");
         Sequence $this$forEach$iv = SequencesKt.map(VisitorKt.childrenOf(node), (Function1)null.INSTANCE);
-        int $i$f$forEach = false;
+        boolean $i$f$forEach = false;
         Iterator var4 = $this$forEach$iv.iterator();
 
         while (var4.hasNext()) {
@@ -62,7 +62,7 @@ public abstract class Visitor {
                     }
                 }
 
-                $this$map$iv = ((List)destination$iv$iv);
+                $this$map$iv = (destination$iv$iv);
                 $i$f$map = false;
                 destination$iv$iv = (new ArrayList(CollectionsKt.collectionSizeOrDefault($this$map$iv, 10)));
                 $i$f$mapTo = false;
@@ -108,7 +108,7 @@ public abstract class Visitor {
             }
         }
 
-        Iterable $this$map$iv = ((List)destination$iv$iv);
+        Iterable $this$map$iv = (destination$iv$iv);
         $i$f$map = false;
         destination$iv$iv = (new ArrayList(CollectionsKt.collectionSizeOrDefault($this$map$iv, 10)));
         $i$f$mapTo = false;

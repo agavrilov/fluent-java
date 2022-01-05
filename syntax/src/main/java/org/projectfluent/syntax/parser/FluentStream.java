@@ -53,7 +53,7 @@ public final class FluentStream extends ParserStream {
             this.peek();
         }
 
-        if (Intrinsics.areEqual(this.currentPeek(), StreamKt.getEOF())) {
+        if (Objects.equals(this.currentPeek(), StreamKt.getEOF())) {
             return blank;
         } else {
             this.resetPeek(lineStart);
@@ -110,7 +110,7 @@ public final class FluentStream extends ParserStream {
     }
 
     public final void expectLineEnd() {
-        if (!Intrinsics.areEqual(this.currentChar(), StreamKt.getEOF())) {
+        if (!Objects.equals(this.currentChar(), StreamKt.getEOF())) {
             Character var10000 = this.currentChar();
             byte var1 = 10;
             if (var10000 != null) {
@@ -242,7 +242,7 @@ public final class FluentStream extends ParserStream {
                 }
             }
 
-            if (Intrinsics.areEqual(ch, StreamKt.getEOF()) ^ true) {
+            if (Objects.equals(ch, StreamKt.getEOF()) ^ true) {
                 var10000 = true;
                 return var10000;
             }

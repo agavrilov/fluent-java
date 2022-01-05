@@ -1,5 +1,7 @@
 package org.projectfluent.syntax.parser;
 
+import java.util.Objects;
+
 import org.projectfluent.syntax.ast.PatternElement;
 
 final class Indent extends PatternElement {

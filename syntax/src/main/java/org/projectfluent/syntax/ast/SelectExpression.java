@@ -1,6 +1,7 @@
 package org.projectfluent.syntax.ast;
 
 import java.util.List;
+import java.util.Objects;
 
 public final class SelectExpression extends Expression {
 

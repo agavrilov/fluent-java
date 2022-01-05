@@ -1,5 +1,7 @@
 package org.projectfluent.syntax.ast;
 
+import java.util.Objects;
+
 import kotlin.jvm.internal.DefaultConstructorMarker;
 
 public final class TermReference extends Expression {

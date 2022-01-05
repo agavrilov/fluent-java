@@ -1,5 +1,7 @@
 package org.projectfluent.syntax.ast;
 
+import java.util.Objects;
+
 public final class Identifier extends SyntaxNode implements VariantKey {
 
     private String name;

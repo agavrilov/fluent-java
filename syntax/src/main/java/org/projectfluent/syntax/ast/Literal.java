@@ -1,5 +1,7 @@
 package org.projectfluent.syntax.ast;
 
+import java.util.Objects;
+
 public abstract class Literal extends Expression {
 
     private final String value;

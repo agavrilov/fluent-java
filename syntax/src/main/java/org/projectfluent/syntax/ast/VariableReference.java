@@ -1,5 +1,7 @@
 package org.projectfluent.syntax.ast;
 
+import java.util.Objects;
+
 public final class VariableReference extends Expression {
     // $FF: renamed from: id org.projectfluent.syntax.ast.Identifier
 

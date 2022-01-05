@@ -3,6 +3,7 @@ package org.projectfluent.syntax.ast;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import kotlin.collections.CollectionsKt;
 

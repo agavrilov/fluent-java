@@ -2,6 +2,7 @@ package org.projectfluent.syntax.ast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public final class Junk extends TopLevel {
 

@@ -1,5 +1,7 @@
 package org.projectfluent.syntax.ast;
 
+import java.util.Objects;
+
 public abstract class BaseComment extends Entry {
 
     private String content;
@@ -14,8 +16,8 @@ public abstract class BaseComment extends Entry {
     }
 
     public BaseComment(String content) {
-        Objects.requireNonNull(content, "content");
         super();
+        Objects.requireNonNull(content, "content");
         this.content = content;
     }
 }

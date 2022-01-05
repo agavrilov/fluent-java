@@ -1,5 +1,7 @@
 package org.projectfluent.syntax.processor;
 
+import java.util.Objects;
+
 import kotlin.jvm.functions.Function1;
 
 import kotlin.jvm.internal.Lambda;

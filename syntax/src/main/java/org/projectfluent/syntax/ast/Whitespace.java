@@ -1,5 +1,7 @@
 package org.projectfluent.syntax.ast;
 
+import java.util.Objects;
+
 public final class Whitespace extends TopLevel {
 
     private final String content;

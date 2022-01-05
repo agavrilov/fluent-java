@@ -1,5 +1,7 @@
 package org.projectfluent.syntax.parser;
 
+import java.util.Objects;
+
 import kotlin.text.StringsKt;
 
 public class ParserStream {
